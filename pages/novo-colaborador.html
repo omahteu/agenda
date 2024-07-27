@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="../dist/assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="../dist/assets/css/app.css">
-    <link rel="shortcut icon" href="../dist/assets/images/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="../imagens/localizacao.png" type="image/x-icon">
 </head>
 
 <body>
@@ -23,7 +23,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.html"><img src="./dist/assets/images/logo/logo.png" alt="Logo" srcset=""></a>
+                            <a href="index.html"><img src="../imagens/localizacao.png" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -35,7 +35,7 @@
                         <li class="sidebar-title">Menu</li>
 
                         <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="../index.html" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -315,17 +315,17 @@
 
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
-                                <i class="bi bi-person-badge-fill"></i>
+                                <i class="bi bi-people-fill"></i>
                                 <span>Colaboradores</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="./pages/novo-colaborador.html">Novo Colaborador</a>
+                                    <a href="./novo-colaborador.html">Novo Colaborador</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="./pages/colaboradores.html">Ver Colaboradores</a>
+                                    <a href="./colaboradores.html">Ver Colaboradores</a>
                                 </li>
-                                <li class="submenu-item ">
+                                <!-- <li class="submenu-item ">
                                     <a href="./dist/auth-login.html">Login</a>
                                 </li>
                                 <li class="submenu-item ">
@@ -333,27 +333,27 @@
                                 </li>
                                 <li class="submenu-item ">
                                     <a href="./dist/auth-forgot-password.html">Forgot Password</a>
-                                </li>
+                                </li> -->
                             </ul>
                         </li>
 
-                        <!-- <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
-                                <i class="bi bi-x-octagon-fill"></i>
-                                <span>Errors</span>
+                                <i class="bi bi-journal-bookmark-fill"></i>
+                                <span>Agenda</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="./dist/error-403.html">403</a>
+                                    <a href="./criar-agenda.html">Criar Agenda</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="./dist/error-404.html">404</a>
+                                    <a href="./ver-agenda.html">Ver Agenda</a>
                                 </li>
-                                <li class="submenu-item ">
+                                <!-- <li class="submenu-item ">
                                     <a href="./dist/error-500.html">500</a>
-                                </li>
+                                </li> -->
                             </ul>
-                        </li> -->
+                        </li>
 
                         <!-- <li class="sidebar-title">Raise Support</li> -->
 
@@ -399,7 +399,7 @@
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item"><a href="../index.html">Dashboard</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">Novo Colaborador</li>
                                 </ol>
                             </nav>
@@ -414,55 +414,54 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form">
+                                        <form class="form" method="post" action="">
                                             <div class="row">
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="first-name-column">First Name</label>
-                                                        <input type="text" id="first-name-column" class="form-control"
-                                                            placeholder="First Name" name="fname-column">
+                                                        <label for="first-name-column">Nome</label>
+                                                        <input type="text" name="nome" class="form-control"
+                                                            placeholder="Nome">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="last-name-column">Last Name</label>
-                                                        <input type="text" id="last-name-column" class="form-control"
-                                                            placeholder="Last Name" name="lname-column">
+                                                        <label for="last-name-column">CPF</label>
+                                                        <input type="text" name="cpf" class="form-control"
+                                                            placeholder="CPF">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="city-column">City</label>
-                                                        <input type="text" id="city-column" class="form-control"
-                                                            placeholder="City" name="city-column">
+                                                        <label for="city-column">Data de Nascimento</label>
+                                                        <input type="date" name="nascimento" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="country-floating">Country</label>
-                                                        <input type="text" id="country-floating" class="form-control"
-                                                            name="country-floating" placeholder="Country">
+                                                        <label for="country-floating">Telefone</label>
+                                                        <input type="text" name="telefone" class="form-control"
+                                                            placeholder="Telefone">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="company-column">Company</label>
-                                                        <input type="text" id="company-column" class="form-control"
-                                                            name="company-column" placeholder="Company">
+                                                        <label for="company-column">Email</label>
+                                                        <input type="email" name="email" class="form-control"
+                                                            placeholder="Email">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <label for="email-id-column">Email</label>
-                                                        <input type="email" id="email-id-column" class="form-control"
-                                                            name="email-id-column" placeholder="Email">
+                                                        <label for="email-id-column">Senha</label>
+                                                        <input type="password" name="senha" class="form-control"
+                                                            placeholder="Senha">
                                                     </div>
                                                 </div>
                                                 <div class="col-12 d-flex justify-content-end">
                                                     <button type="submit"
-                                                        class="btn btn-primary me-1 mb-1">Submit</button>
+                                                        class="btn btn-primary me-1 mb-1">Salvar</button>
                                                     <button type="reset"
-                                                        class="btn btn-light-secondary me-1 mb-1">Reset</button>
+                                                        class="btn btn-light-secondary me-1 mb-1">Limpar</button>
                                                 </div>
                                             </div>
                                         </form>

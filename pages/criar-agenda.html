@@ -4,18 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda</title>
+    <title>Criar Agenda</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./dist/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="../dist/assets/css/bootstrap.css">
 
-    <link rel="stylesheet" href="./dist/assets/vendors/iconly/bold.css">
-
-    <link rel="stylesheet" href="./dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
-    <link rel="stylesheet" href="./dist/assets/vendors/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" href="./dist/assets/css/app.css">
-    <link rel="shortcut icon" href="./imagens/localizacao.png" type="image/x-icon">
+    <link rel="stylesheet" href="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="../dist/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="../dist/assets/css/app.css">
+    <link rel="shortcut icon" href="../imagens/localizacao.png" type="image/x-icon">
 </head>
 
 <body>
@@ -25,7 +23,7 @@
                 <div class="sidebar-header">
                     <div class="d-flex justify-content-between">
                         <div class="logo">
-                            <a href="index.html"><img src="./imagens/localizacao.png" alt="Logo" srcset=""></a>
+                            <a href="index.html"><img src="../imagens/localizacao.png" alt="Logo" srcset=""></a>
                         </div>
                         <div class="toggler">
                             <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
@@ -37,7 +35,7 @@
                         <li class="sidebar-title">Menu</li>
 
                         <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="../index.html" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -316,16 +314,16 @@
                         </li> -->
 
                         <li class="sidebar-item  has-sub">
-                            <a href="." class='sidebar-link'>
+                            <a href="#" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
                                 <span>Colaboradores</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="./pages/novo-colaborador.html">Novo Colaborador</a>
+                                    <a href="./novo-colaborador.html">Novo Colaborador</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="./pages/colaboradores.html">Ver Colaboradores</a>
+                                    <a href="./colaboradores.html">Ver Colaboradores</a>
                                 </li>
                                 <!-- <li class="submenu-item ">
                                     <a href="./dist/auth-login.html">Login</a>
@@ -346,10 +344,10 @@
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="./pages/criar-agenda.html">Criar Agenda</a>
+                                    <a href="./criar-agenda.html">Criar Agenda</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="./pages/ver-agenda.html">Ver Agenda</a>
+                                    <a href="./ver-agenda.html">Ver Agenda</a>
                                 </li>
                                 <!-- <li class="submenu-item ">
                                     <a href="./dist/error-500.html">500</a>
@@ -393,285 +391,95 @@
             </header>
 
             <div class="page-heading">
-                <h3>Localização Colaboradores</h3>
-            </div>
-            <div class="page-content">
-                <section class="row">
-                    <div class="col-12 col-lg-12">
-                        <div class="row">
-                            <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon blue">
-                                                    <i class="iconly-boldLocation"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">João Manoel</h6>
-                                                <h6 class="font-extrabold mb-0"><a href="https://www.google.com/maps/place/Museu+Oscar+Niemeyer+%7C+MON/@-25.4098994,-49.2696348,17z/data=!3m1!4b1!4m6!3m5!1s0x94dce41fa86f6915:0xf5f24c5f00323bee!8m2!3d-25.4098994!4d-49.2670599!16s%2Fm%2F02qpf_0?entry=ttu">MON</a></h6>
-                                                <span>Atualizado às 12:43h</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon purple">
-                                                    <i class="iconly-boldLocation"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Maria Joana</h6>
-                                                <h6 class="font-extrabold mb-0"><a href="https://www.google.com/maps/place/Parque+Barigui/@-25.4267589,-49.3098901,17z/data=!3m1!4b1!4m6!3m5!1s0x94dce3df88cb5fa7:0x64ed421a45cf1e53!8m2!3d-25.4267589!4d-49.3073152!16s%2Fg%2F122r7ds4?entry=ttu">Parque Barigui</a></h6>
-                                                <span>Atualizado às 12:43h</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon blue">
-                                                    <i class="iconly-boldLocation"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">André Alves</h6>
-                                                <h6 class="font-extrabold mb-0"><a href="https://www.google.com/maps/place/Shopping+Esta%C3%A7%C3%A3o/@-25.4381598,-49.2699732,17z/data=!3m2!4b1!5s0x94dce4688848825b:0x5413612e90a6da5c!4m6!3m5!1s0x94dce468ed54b4bf:0x4f96264373029feb!8m2!3d-25.4381598!4d-49.2673983!16s%2Fg%2F121yygl1?entry=ttu">Shopping Estação</a></h6>
-                                                <span>Atualizado às 12:43h</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-6 col-lg-3 col-md-6">
-                                <div class="card">
-                                    <div class="card-body px-3 py-4-5">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="stats-icon purple">
-                                                    <i class="iconly-boldLocation"></i>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-8">
-                                                <h6 class="text-muted font-semibold">Ana Maria</h6>
-                                                <h6 class="font-extrabold mb-0"><a href="https://www.google.com/maps/place/Ligga+Arena/@-25.4482116,-49.2795615,17z/data=!3m1!4b1!4m6!3m5!1s0x94dce476c516477b:0x4d03657ac0bc148c!8m2!3d-25.4482116!4d-49.2769866!16zL20vMDdibTRw?entry=ttu">Ligga Arena</a></h6>
-                                                <span>Atualizado às 12:43h</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Criar Agenda</h3>
                         </div>
-                        <!-- <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Profile Visit</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div id="chart-profile-visit"></div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-12 col-md-6 order-md-2 order-first">
+                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="../index.html">Dashboard</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Criar Agenda</li>
+                                </ol>
+                            </nav>
                         </div>
-                        <div class="row">
-                            <div class="col-12 col-xl-4">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Profile Visit</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="d-flex align-items-center">
-                                                    <svg class="bi text-primary" width="32" height="32" fill="blue"
-                                                        style="width:10px">
-                                                        <use
-                                                            xlink:href="./dist/assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                                    </svg>
-                                                    <h5 class="mb-0 ms-3">Europe</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <h5 class="mb-0">862</h5>
-                                            </div>
-                                            <div class="col-12">
-                                                <div id="chart-europe"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="d-flex align-items-center">
-                                                    <svg class="bi text-success" width="32" height="32" fill="blue"
-                                                        style="width:10px">
-                                                        <use
-                                                            xlink:href="./dist/assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                                    </svg>
-                                                    <h5 class="mb-0 ms-3">America</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <h5 class="mb-0">375</h5>
-                                            </div>
-                                            <div class="col-12">
-                                                <div id="chart-america"></div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <div class="d-flex align-items-center">
-                                                    <svg class="bi text-danger" width="32" height="32" fill="blue"
-                                                        style="width:10px">
-                                                        <use
-                                                            xlink:href="./dist/assets/vendors/bootstrap-icons/bootstrap-icons.svg#circle-fill" />
-                                                    </svg>
-                                                    <h5 class="mb-0 ms-3">Indonesia</h5>
-                                                </div>
-                                            </div>
-                                            <div class="col-6">
-                                                <h5 class="mb-0">1025</h5>
-                                            </div>
-                                            <div class="col-12">
-                                                <div id="chart-indonesia"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-xl-8">
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h4>Latest Comments</h4>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="table-responsive">
-                                            <table class="table table-hover table-lg">
-                                                <thead>
-                                                    <tr>
-                                                        <th>Name</th>
-                                                        <th>Comment</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar avatar-md">
-                                                                    <img src="./dist/assets/images/faces/5.jpg">
-                                                                </div>
-                                                                <p class="font-bold ms-3 mb-0">Si Cantik</p>
-                                                            </div>
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            <p class=" mb-0">Congratulations on your graduation!</p>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="col-3">
-                                                            <div class="d-flex align-items-center">
-                                                                <div class="avatar avatar-md">
-                                                                    <img src="./dist/assets/images/faces/2.jpg">
-                                                                </div>
-                                                                <p class="font-bold ms-3 mb-0">Si Ganteng</p>
-                                                            </div>
-                                                        </td>
-                                                        <td class="col-auto">
-                                                            <p class=" mb-0">Wow amazing design! Can you make another
-                                                                tutorial for
-                                                                this design?</p>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
-                    <!-- <div class="col-12 col-lg-3">
-                        <div class="card">
-                            <div class="card-body py-4 px-5">
-                                <div class="d-flex align-items-center">
-                                    <div class="avatar avatar-xl">
-                                        <img src="./dist/assets/images/faces/1.jpg" alt="Face 1">
-                                    </div>
-                                    <div class="ms-3 name">
-                                        <h5 class="font-bold">John Duck</h5>
-                                        <h6 class="text-muted mb-0">@johnducky</h6>
+                </div>
+
+                <!-- // Basic multiple Column Form section start -->
+                <section id="multiple-column-form">
+                    <div class="row match-height">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form class="form" method="post" action="">
+                                            <div class="row">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="first-name-column">Data</label>
+                                                        <input type="date" name="data" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="last-name-column">Colaborador</label>
+                                                        <select name="colaborador" class="form-control">
+                                                            <option value="" hidden>Selecione</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="city-column">Local</label>
+                                                        <input type="text" name="local" class="form-control"
+                                                        placeholder="Local">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="country-floating">Horário</label>
+                                                        <input type="time" name="horario" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <!-- <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="company-column">Email</label>
+                                                        <input type="email" name="email" class="form-control"
+                                                            placeholder="Email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="email-id-column">Senha</label>
+                                                        <input type="password" name="senha" class="form-control"
+                                                            placeholder="Senha">
+                                                    </div>
+                                                </div> -->
+                                                <div class="col-12 d-flex justify-content-end">
+                                                    <button type="submit"
+                                                        class="btn btn-primary me-1 mb-1">Salvar</button>
+                                                    <button type="reset"
+                                                        class="btn btn-light-secondary me-1 mb-1">Limpar</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Recent Messages</h4>
-                            </div>
-                            <div class="card-content pb-4">
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="./dist/assets/images/faces/4.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Hank Schrader</h5>
-                                        <h6 class="text-muted mb-0">@johnducky</h6>
-                                    </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="./dist/assets/images/faces/5.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">Dean Winchester</h5>
-                                        <h6 class="text-muted mb-0">@imdean</h6>
-                                    </div>
-                                </div>
-                                <div class="recent-message d-flex px-4 py-3">
-                                    <div class="avatar avatar-lg">
-                                        <img src="./dist/assets/images/faces/1.jpg">
-                                    </div>
-                                    <div class="name ms-4">
-                                        <h5 class="mb-1">John Dodol</h5>
-                                        <h6 class="text-muted mb-0">@dodoljohn</h6>
-                                    </div>
-                                </div>
-                                <div class="px-4">
-                                    <button class='btn btn-block btn-xl btn-light-primary font-bold mt-3'>Start
-                                        Conversation</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-header">
-                                <h4>Visitors Profile</h4>
-                            </div>
-                            <div class="card-body">
-                                <div id="chart-visitors-profile"></div>
-                            </div>
-                        </div>
-                    </div> -->
+                    </div>
                 </section>
+                <!-- // Basic multiple Column Form section end -->
             </div>
 
         </div>
     </div>
-    <script src="./dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
-    <script src="./dist/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="../dist/assets/js/bootstrap.bundle.min.js"></script>
 
-    <script src="./dist/assets/vendors/apexcharts/apexcharts.js"></script>
-    <script src="./dist/assets/js/pages/dashboard.js"></script>
-
-    <script src="./dist/assets/js/main.js"></script>
+    <script src="../dist/assets/js/main.js"></script>
 </body>
 
 </html>
