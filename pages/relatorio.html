@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Agenda</title>
+    <title>Agenda</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -337,7 +337,7 @@
                             </ul>
                         </li>
 
-                        <li class="sidebar-item  has-sub active">
+                        <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-bookmark-fill"></i>
                                 <span>Agenda</span>
@@ -357,7 +357,7 @@
 
                         <!-- <li class="sidebar-title">Raise Support</li> -->
 
-                        <li class="sidebar-item  ">
+                        <li class="sidebar-item active ">
                             <a href="./relatorio.html" class='sidebar-link'>
                                 <i class="bi bi-life-preserver"></i>
                                 <span>Relatório</span>
@@ -394,98 +394,86 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Criar Agenda</h3>
+                            <h3>Agenda</h3>
                         </div>
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="../index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Criar Agenda</li>
+                                    <li class="breadcrumb-item active" aria-current="page">Agenda</li>
                                 </ol>
                             </nav>
                         </div>
                     </div>
                 </div>
 
-                <!-- // Basic multiple Column Form section start -->
-                <section id="multiple-column-form">
-                    <div class="row match-height">
+                <!-- Hoverable rows start -->
+                <section class="section">
+                    <div class="row" id="table-hover-row">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-content">
-                                    <div class="card-body">
-                                        <form class="form" method="post" action="">
-                                            <div class="row">
-                                                <div class="col-md-6 col-12">
-                                                    <div class="form-group">
-                                                        <label for="first-name-column">Data</label>
-                                                        <input type="date" name="data" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <div class="form-group">
-                                                        <label for="last-name-column">Colaborador</label>
-                                                        <select name="colaborador" class="form-control">
-                                                            <option value="" hidden>Selecione</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <div class="form-group">
-                                                        <label for="city-column">Local</label>
-                                                        <input type="text" name="local" class="form-control"
-                                                        placeholder="Local">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <div class="form-group">
-                                                        <label for="country-floating">Horário</label>
-                                                        <input type="time" name="horario" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12 col-12">
-                                                    <div class="form-group">
-                                                        <label for="country-floating">Observações</label>
-                                                        <textarea class="form-control" name="" id="" placeholder="Observações"></textarea>
-                                                    </div>
-                                                </div>
-                                                <!-- <div class="col-md-6 col-12">
-                                                    <div class="form-group">
-                                                        <label for="company-column">Email</label>
-                                                        <input type="email" name="email" class="form-control"
-                                                            placeholder="Email">
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6 col-12">
-                                                    <div class="form-group">
-                                                        <label for="email-id-column">Senha</label>
-                                                        <input type="password" name="senha" class="form-control"
-                                                            placeholder="Senha">
-                                                    </div>
-                                                </div> -->
-                                                <div class="col-12 d-flex justify-content-end">
-                                                    <button type="submit"
-                                                        class="btn btn-primary me-1 mb-1">Salvar</button>
-                                                    <button type="reset"
-                                                        class="btn btn-light-secondary me-1 mb-1">Limpar</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
+                                    <!-- table hover -->
+                                    <canvas id="hoursWorkedChart" width="400" height="200"></canvas>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <!-- // Basic multiple Column Form section end -->
+                <!-- Hoverable rows end -->
+
             </div>
 
         </div>
     </div>
     <script src="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../dist/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script src="../dist/assets/js/main.js"></script>
+
+    <script>
+        // Dados mockados
+        const employees = ['João', 'Maria', 'Pedro', 'Ana', 'Carlos', 'Bianca'];
+        const hoursWorked = [160, 170, 155, 180, 175, 165];
+
+        // Configuração do gráfico
+        const ctx = document.getElementById('hoursWorkedChart').getContext('2d');
+        const hoursWorkedChart = new Chart(ctx, {
+            type: 'bar', // Tipo do gráfico
+            data: {
+                labels: employees,
+                datasets: [{
+                    label: 'Horas Trabalhadas',
+                    data: hoursWorked,
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 99, 132, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 99, 132, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true // Começar o eixo y do zero
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
