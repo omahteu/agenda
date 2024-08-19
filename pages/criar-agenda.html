@@ -414,7 +414,7 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form" method="post" action="">
+                                        <form class="form" method="post" action="../php/cadastros/agenda.php">
                                             <div class="row">
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
@@ -425,19 +425,26 @@
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
                                                         <label for="last-name-column">Colaborador</label>
-                                                        <select name="colaborador" class="form-control">
+                                                        <select name="colaborador" id="colaborador" class="form-control">
                                                             <option value="" hidden>Selecione</option>
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 col-12">
+                                                <div class="col-md-4 col-12">
                                                     <div class="form-group">
-                                                        <label for="city-column">Local</label>
-                                                        <input type="text" name="local" class="form-control"
-                                                        placeholder="Local">
+                                                        <label for="city-column">CEP</label>
+                                                        <input type="text" name="cep" class="form-control"
+                                                        placeholder="CEP">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6 col-12">
+                                                <div class="col-md-4 col-12">
+                                                    <div class="form-group">
+                                                        <label for="city-column">Número</label>
+                                                        <input type="text" name="numero" class="form-control"
+                                                        placeholder="Número">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 col-12">
                                                     <div class="form-group">
                                                         <label for="country-floating">Horário</label>
                                                         <input type="time" name="horario" class="form-control">
@@ -446,7 +453,7 @@
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-group">
                                                         <label for="country-floating">Observações</label>
-                                                        <textarea class="form-control" name="" id="" placeholder="Observações"></textarea>
+                                                        <textarea class="form-control" name="observacoes" id="" placeholder="Observações"></textarea>
                                                     </div>
                                                 </div>
                                                 <!-- <div class="col-md-6 col-12">
@@ -482,10 +489,13 @@
 
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../dist/assets/js/bootstrap.bundle.min.js"></script>
 
     <script src="../dist/assets/js/main.js"></script>
+
+    <script type="module" src="../js/receber/colaboradores-select.js"></script>
 </body>
 
 </html>

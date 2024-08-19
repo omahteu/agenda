@@ -8,12 +8,9 @@ $db = $database->getConnection();
 
 $crud = new Crud($db);
 
-// $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
-
-// $query = "SELECT nome, cpf, dataNascimento, telefone, email, status status FROM usuarios";
-$query = "SELECT * FROM usuarios";
+$query = "SELECT * FROM diario";
 $result = $crud->read($query);
 
 header('Content-Type: application/json');
-echo json_encode($result);
+echo $result;
 ?>

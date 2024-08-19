@@ -410,6 +410,38 @@
                 <!-- Hoverable rows start -->
                 <section class="section">
                     <div class="row" id="table-hover-row">
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-content">
+                                    <!-- table hover -->
+                                    <select class="form-control" name="" id="">
+                                        <option value="" hidden>Selecione um mês</option>
+                                        <option value="1">Janeiro</option>
+                                        <option value="2">Fevereiro</option>
+                                        <option value="3">Março</option>
+                                        <option value="4">Abril</option>
+                                        <option value="5">Maio</option>
+                                        <option value="6">Junho</option>
+                                        <option value="7">Julho</option>
+                                        <option value="8">Agosto</option>
+                                        <option value="9">Setembro</option>
+                                        <option value="10">Outubro</option>
+                                        <option value="11">Novembro</option>
+                                        <option value="12">Dezembro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card">
+                                <div class="card-content">
+                                    <!-- table hover -->
+                                    <select class="form-control" name="colaborador" id="colaborador">
+                                        <option value="" hidden>Selecione um colaborador</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-content">
@@ -426,6 +458,7 @@
 
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../dist/assets/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -434,8 +467,8 @@
 
     <script>
         // Dados mockados
-        const employees = ['João', 'Maria', 'Pedro', 'Ana', 'Carlos', 'Bianca'];
-        const hoursWorked = [160, 170, 155, 180, 175, 165];
+        const employees = [];
+        const hoursWorked = [0, 0, 0, 0, 0, 0];
 
         // Configuração do gráfico
         const ctx = document.getElementById('hoursWorkedChart').getContext('2d');
@@ -468,12 +501,14 @@
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true // Começar o eixo y do zero
+                        beginAtZero: true,
+                        max: 220
                     }
                 }
             }
         });
     </script>
+    <script type="module" src="../js/receber/colaboradores-select.js"></script>
 </body>
 
 </html>
