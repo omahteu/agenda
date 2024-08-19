@@ -23,10 +23,10 @@
                     </div>
                     <h1 class="auth-title">Login.</h1>
 
-                    <form>
+                    <form method="post" action="./php/login.php">
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" name="usuario"
-                                placeholder="Usuário">
+                            <input type="text" class="form-control form-control-xl" name="cpf"
+                                placeholder="CPF">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
@@ -38,8 +38,8 @@
                                 <i class="bi bi-shield-lock"></i>
                             </div>
                         </div>
-                        <!-- <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5"></button> -->
-                        <a class="btn btn-primary btn-block btn-lg shadow-lg mt-5" href="./pages/dash.html">Entrar</a>
+                        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Entrar</button>
+                        <!-- <a class="btn btn-primary btn-block btn-lg shadow-lg mt-5" href="./pages/dash.html">Entrar</a> -->
                     </form>
                 </div>
             </div>

@@ -5,7 +5,7 @@ require_once 'Database.php';
 require_once 'Crud.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $email = $_POST['usuario'];
+    $cpf = $_POST['cpf'];
     $password = $_POST['senha'];
 
     // Obter a conexão com o banco de dados
@@ -16,27 +16,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $crud = new Crud($db);
 
     // Query para verificar o usuário
-    $query = "SELECT * FROM usuarios WHERE email = :email";
+    $query = "SELECT * FROM usuarios WHERE cpf = :cpf";
     
     // Preparar e executar a query
     $stmt = $db->prepare($query);
-    $stmt->bindParam(':email', $email);
+    $stmt->bindParam(':cpf', $cpf);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($user && password_verify($password, $user['senha'])) {
         // Senha correta, criar a sessão do usuário
         $_SESSION['user_id'] = $user['id'];
-        $_SESSION['user_email'] = $user['email'];
-        // Obtém o URI completo (path + query string)
+
+        // Definir cookie com o ID do usuário
+        setcookie('user_id', $user['id'], time() + 43200, '/'); // Cookie válido por 1 hora
 
         // Redirecionar para o dashboard
-        ini_set('display_errors', 1);
-        ini_set('display_startup_errors', 1);
-        error_reporting(E_ALL);
-        header("Location: ../pages/samples/dash.php");
-
-
+        header("Location: ../pages/dash.html");
         exit();
     } else {
         // Senha incorreta, exibir alerta
