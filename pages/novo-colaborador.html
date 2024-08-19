@@ -457,6 +457,16 @@
                                                             placeholder="Senha">
                                                     </div>
                                                 </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="email-id-column">Perfil</label>
+                                                        <select class="form-control" name="perfil" id="">
+                                                            <option value="" hidden>Selecione um perfil</option>
+                                                            <option value="1">Administrativo</option>
+                                                            <option value="0">Colaborativo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
                                                 <div class="col-12 d-flex justify-content-end">
                                                     <button type="submit"
                                                         class="btn btn-primary me-1 mb-1">Salvar</button>
@@ -516,6 +526,8 @@
             });
         });
     </script>
+
+
 </body>
 
 </html>
