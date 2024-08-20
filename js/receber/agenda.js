@@ -27,7 +27,7 @@ $(document).ready(function() {
     agendaDiaria();
 
     // Adiciona o evento de mudança nos selects
-    $('#filtro-data, #filtro-colaborador').on('change', function() {
+    $('#filtro-data, #colaborador').on('change', function() {
         filtrarAgenda();
     });
 });
@@ -45,8 +45,10 @@ async function agendaDiaria() {
             <tr>
                 <td>${e.data}</td>
                 <td>${e.colaborador}</td>
-                <td>${e.cep}</td>
-                <td>${e.numero}</td>
+                <td>${e.hospital}</td>
+                <td>${e.material}</td>
+                <td>${e.medico}</td>
+                <td>${e.convenio}</td>
                 <td>${e.horario}</td>
                 <td>${e.observacoes}</td>
             </tr>
@@ -79,8 +81,10 @@ async function filtrarAgenda() {
             <tr>
                 <td>${e.data}</td>
                 <td>${e.colaborador}</td>
-                <td>${e.cep}</td>
-                <td>${e.numero}</td>
+                <td>${e.hospital}</td>
+                <td>${e.material}</td>
+                <td>${e.medico}</td>
+                <td>${e.convenio}</td>
                 <td>${e.horario}</td>
                 <td>${e.observacoes}</td>
             </tr>
