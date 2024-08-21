@@ -32,6 +32,8 @@ async function quadroColaboradores() {
                 <td>${e.telefone}</td>
                 <td>${e.email}</td>
                 <td>${e.status}</td>
+                <td><button type="button" class="btn btn-primary" value="${e.id}"><i class="bi bi-pencil"></i></button></td>
+                <td><button type="button" class="btn btn-danger" value="${e.id}"><i class="bi bi-trash"></i></button></td>
             </tr>
         `
     });
