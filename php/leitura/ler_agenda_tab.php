@@ -8,7 +8,7 @@ $db = $database->getConnection();
 
 $crud = new Crud($db);
 
-$query = "SELECT colaborador, horario FROM diario";
+$query = "SELECT colaborador, horario_inicio, horario_fim, hospital FROM diario";
 $result = $crud->read($query);
 
 header('Content-Type: application/json');

@@ -64,7 +64,8 @@ async function agendaDiaria() {
                 <td>${e.material}</td>
                 <td>${e.medico}</td>
                 <td>${e.convenio}</td>
-                <td>${e.horario}</td>
+                <td>${e.horario_inicio}</td>
+                <td>${e.horario_fim}</td>
                 <td>${e.observacoes}</td>
                 <td><button type="button" class="btn btn-primary" value="${e.id}"><i class="bi bi-pencil"></i></button></td>
                 <td><button type="button" class="btn btn-danger" value="${e.id}"><i class="bi bi-trash"></i></button></td>
@@ -106,7 +107,8 @@ async function filtrarAgenda() {
                 <td>${e.material}</td>
                 <td>${e.medico}</td>
                 <td>${e.convenio}</td>
-                <td>${e.horario}</td>
+                <td>${e.horario_inicio}</td>
+                <td>${e.horario_fim}</td>
                 <td>${e.observacoes}</td>
                 <td><button type="button" class="btn btn-primary" value="${e.id}"><i class="bi bi-pencil"></i></button></td>
                 <td><button type="button" class="btn btn-danger" value="${e.id}"><i class="bi bi-trash"></i></button></td>
