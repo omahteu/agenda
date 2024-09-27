@@ -14,6 +14,15 @@
     <link rel="stylesheet" href="../dist/assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="../dist/assets/css/app.css">
     <link rel="shortcut icon" href="../imagens/localizacao.png" type="image/x-icon">
+    <style>
+        .conteudo {
+            display: none;
+        }
+        .table-wrapper {
+            max-height: 28em; /* Defina a altura fixa que você deseja */
+            overflow-y: auto;  /* Habilita a rolagem vertical */
+        }
+    </style>
     <!-- <link rel="stylesheet" href="iziToast.min.css"> -->
 </head>
 
@@ -400,8 +409,8 @@
                         <div class="col-12 col-md-6 order-md-2 order-first">
                             <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="../index.html">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Agenda</li>
+                                    <li class=""><button class="btn btn-info" id="f_lista">Lista</button></li>
+                                    <li class=""><button class="btn btn-info" id="f_timeline">Timeline</button></li>
                                 </ol>
                             </nav>
                         </div>
@@ -441,8 +450,8 @@
                             <div class="card">
                                 <div class="card-content">
                                     <!-- table hover -->
-                                    <div class="table-responsive">
-                                        <table class="table table-hover mb-0">
+                                    <div class="table-responsive table-wrapper">
+                                        <table class="table table-hover mb-0" id="tabela_agenda_diaria">
                                             <thead>
                                                 <tr>
                                                     <th>Data</th>
@@ -468,10 +477,11 @@
 
             </div>
 
-            <div id="tabela-diario"></div>
+            <div class="conteudo" id="tabela-diario"></div>
 
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../dist/assets/js/bootstrap.bundle.min.js"></script>
@@ -519,6 +529,22 @@
     </script>
 
     <script type="module" src="../js/tabela/agenda-dash.js"></script>
+
+    <script>
+        $(document).on("click", "#f_lista", function() {
+            $("#tabela-diario").addClass("conteudo")
+            $("#tabela_agenda_diaria").removeClass("conteudo")
+            $("#filtro-hospital").removeClass("conteudo")
+            $("#filtro-material").removeClass("conteudo")
+        })
+
+        $(document).on("click", "#f_timeline", function() {
+            $("#tabela-diario").removeClass("conteudo")
+            $("#tabela_agenda_diaria").addClass("conteudo")
+            $("#filtro-hospital").addClass("conteudo")
+            $("#filtro-material").addClass("conteudo")
+        })
+    </script>
 </body>
 
 </html>

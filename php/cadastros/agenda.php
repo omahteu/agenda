@@ -22,8 +22,8 @@ $status = 1;
 
 // Verifica se já existe um compromisso no mesmo dia e horário
 $query_check = "
-    SELECT * FROM diario 
-    WHERE colaborador = :colaborador 
+    SELECT * FROM diario
+    WHERE colaborador = :colaborador
       AND data = :data
       AND ((:horario_inicio BETWEEN horario_inicio AND horario_fim)
       OR (:horario_fim BETWEEN horario_inicio AND horario_fim)
@@ -51,7 +51,7 @@ if ($stmt_check->rowCount() > 0) {
 
 // Monta a consulta SQL para inserção
 $query = "
-    INSERT INTO diario 
+    INSERT INTO diario
     (colaborador, data, horario_inicio, horario_fim, observacoes, status, hospital, material, medico, convenio)
     VALUES (:colaborador, :data, :horario_inicio, :horario_fim, :observacoes, :status, :hospital, :material, :medico, :convenio)";
 
@@ -83,4 +83,3 @@ if ($stmt->execute()) {
         ]
     );
 }
-?>
