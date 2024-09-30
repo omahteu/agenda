@@ -8,10 +8,24 @@ $db = $database->getConnection();
 
 $crud = new Crud($db);
 
-// $nome = isset($_POST['nome']) ? $_POST['nome'] : '';
+// Ajustar a query para o formato brasileiro da data, tratar valores null e formatar status/is_staff
+$query = "
+    SELECT 
+        IFNULL(nome, '') as nome, 
+        IFNULL(cpf, '') as cpf, 
+        IFNULL(DATE_FORMAT(dataNascimento, '%d/%m/%Y'), '') as dataNascimento, 
+        IFNULL(telefone, '') as telefone, 
+        IFNULL(email, '') as email, 
+        IFNULL(CASE 
+            WHEN status = 1 THEN 'Ativo' 
+            ELSE 'Inativo' 
+        END, '') as status,
+        IFNULL(CASE 
+            WHEN is_staff = 1 THEN 'Administrativo' 
+            ELSE 'Colaborativo' 
+        END, '') as is_staff
+    FROM usuarios";
 
-// $query = "SELECT nome, cpf, dataNascimento, telefone, email, status status FROM usuarios";
-$query = "SELECT * FROM usuarios";
 $result = $crud->read($query);
 
 header('Content-Type: application/json');
