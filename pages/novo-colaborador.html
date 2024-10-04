@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="../dist/assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="../dist/assets/css/app.css">
     <link rel="shortcut icon" href="../imagens/localizacao.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
 </head>
 
 <body>
@@ -421,7 +423,7 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form" method="post" action="../php/cadastros/usuario.php">
+                                        <form id="usuarioForm" class="form" method="post">
                                             <div class="row">
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
@@ -434,7 +436,7 @@
                                                     <div class="form-group">
                                                         <label for="last-name-column">CPF</label>
                                                         <input type="text" name="cpf" class="form-control"
-                                                            placeholder="CPF">
+                                                            placeholder="CPF" id="cpf">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
@@ -476,7 +478,8 @@
                                                 </div>
                                                 <div class="col-12 d-flex justify-content-end">
                                                     <button type="submit"
-                                                        class="btn btn-primary me-1 mb-1">Salvar</button>
+                                                        class="btn btn-primary me-1 mb-1"
+                                                        id="salvar_novo_colaborador">Salvar</button>
                                                     <button type="reset"
                                                         class="btn btn-light-secondary me-1 mb-1">Limpar</button>
                                                 </div>
@@ -493,10 +496,10 @@
 
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../dist/assets/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
     <script src="../dist/assets/js/main.js"></script>
 
     <script>
@@ -533,6 +536,67 @@
             });
         });
     </script>
+
+    <script>
+        $('#usuarioForm').on('submit', function(e) {
+            e.preventDefault(); // Previne o envio padrão do formulário
+        
+            // Remover os pontos e traços do campo CPF
+            var cpf = $('#cpf').val().replace(/[^\d]/g, ''); // Substitui qualquer coisa que não seja número por uma string vazia
+            $('#cpf').val(cpf); // Atualiza o campo CPF com o valor formatado
+        
+            // Serializar os dados do formulário
+            var formData = $(this).serialize();
+        
+            // Fazer a requisição AJAX
+            $.ajax({
+                url: '../php/cadastros/usuario.php', // A URL do PHP para onde os dados serão enviados
+                type: 'POST', // Método de envio
+                data: formData, // Dados serializados do formulário
+                success: function(response) {
+                    // Aqui você trata o que fazer quando a requisição for bem-sucedida
+                    iziToast.success({
+                        title: 'Sucesso',
+                        message: 'Usuário cadastrado com sucesso!',
+                        position: 'topRight',
+                        timeout: 3000
+                    });
+                    document.getElementById("usuarioForm").reset();
+                },
+                error: function(xhr, status, error) {
+                    let msg_raw_erro = JSON.parse(xhr.responseText);
+                    iziToast.error({
+                        title: 'Erro',
+                        message: msg_raw_erro.error,
+                        position: 'topRight',
+                        timeout: 3000
+                    });
+                }
+            });
+        });
+        
+    </script>
+
+    <script>
+        const input = document.getElementById("cpf");
+
+        input.addEventListener("keyup", formatarCPF);
+
+        function formatarCPF(e){
+
+            var v=e.target.value.replace(/\D/g,"");
+
+            v=v.replace(/(\d{3})(\d)/,"$1.$2");
+
+            v=v.replace(/(\d{3})(\d)/,"$1.$2");
+
+            v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
+
+            e.target.value = v;
+
+        } 
+    </script>
+
 
 
 </body>

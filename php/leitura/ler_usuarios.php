@@ -8,9 +8,9 @@ $db = $database->getConnection();
 
 $crud = new Crud($db);
 
-// Ajustar a query para o formato brasileiro da data, tratar valores null e formatar status/is_staff
 $query = "
     SELECT 
+        IFNULL(id, '') as id, 
         IFNULL(nome, '') as nome, 
         IFNULL(cpf, '') as cpf, 
         IFNULL(DATE_FORMAT(dataNascimento, '%d/%m/%Y'), '') as dataNascimento, 

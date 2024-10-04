@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agenda</title>
+    <title>Novo Colaborador</title>
 
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
@@ -14,17 +14,8 @@
     <link rel="stylesheet" href="../dist/assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="../dist/assets/css/app.css">
     <link rel="shortcut icon" href="../imagens/localizacao.png" type="image/x-icon">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
-    <style>
-        .conteudo {
-            display: none;
-        }
-        .table-wrapper {
-            max-height: 28em; /* Defina a altura fixa que você deseja */
-            overflow-y: auto;  /* Habilita a rolagem vertical */
-        }
-    </style>
-    <!-- <link rel="stylesheet" href="iziToast.min.css"> -->
 </head>
 
 <body>
@@ -324,7 +315,7 @@
                             </a>
                         </li> -->
 
-                        <li class="sidebar-item  has-sub">
+                        <li class="sidebar-item  has-sub active">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-people-fill"></i>
                                 <span>Colaboradores</span>
@@ -348,7 +339,7 @@
                             </ul>
                         </li>
 
-                        <li class="sidebar-item  has-sub active">
+                        <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-journal-bookmark-fill"></i>
                                 <span>Agenda</span>
@@ -412,97 +403,90 @@
                 <div class="page-title">
                     <div class="row">
                         <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Agenda</h3>
-                        </div>
-                        <div class="col-12 col-md-6 order-md-2 order-first">
-                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                <ol class="breadcrumb">
-                                    <li class=""><button class="btn btn-info" id="f_lista">Lista</button></li>
-                                    <li class=""><button class="btn btn-info" id="f_timeline">Timeline</button></li>
-                                </ol>
-                            </nav>
+                            <h3>Editar Colaborador</h3>
                         </div>
                     </div>
                 </div>
 
-                <!-- Hoverable rows start -->
-                <section class="section">
-                    <div class="row" id="table-hover-row">
-                        <div class="col-md-3 col-12">
-                            <div class="form-group">
-                                <input type="date" class="form-control" name="" id="filtro-data">
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-12">
-                            <div class="form-group">
-                                <select class="form-control" name="" id="colaborador">
-                                    <option value="" hidden>Selecione um colaborador...</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-12">
-                            <div class="form-group">
-                                <select class="form-control" name="" id="filtro-hospital">
-                                    <option value="" hidden>Selecione um hospital...</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-12">
-                            <div class="form-group">
-                                <select class="form-control" name="" id="filtro-material">
-                                    <option value="" hidden>Selecione um material...</option>
-                                </select>
-                            </div>
-                        </div>
+                <!-- // Basic multiple Column Form section start -->
+                <section id="multiple-column-form">
+                    <div class="row match-height">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-content">
-                                    <!-- table hover -->
-                                    <div class="table-responsive table-wrapper">
-                                        <table class="table table-hover mb-0" id="tabela_agenda_diaria">
-                                            <thead>
-                                                <tr>
-                                                    <th>Data</th>
-                                                    <th>Colaborador</th>
-                                                    <th>Hospital</th>
-                                                    <th>Material</th>
-                                                    <th>Médico</th>
-                                                    <th>Convênio</th>
-                                                    <th>Horário Início</th>
-                                                    <th>Horário Fim</th>
-                                                    <th>Observações</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="agenda-diaria"></tbody>
-                                        </table>
+                                    <div class="card-body">
+                                        <form id="usuarioForm" class="form" method="post">
+                                            <div class="row">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="first-name-column">Nome</label>
+                                                        <input type="text" name="nome" class="form-control"
+                                                            placeholder="Nome">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="last-name-column">CPF</label>
+                                                        <input type="text" name="cpf" class="form-control"
+                                                            placeholder="CPF" id="cpf">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="city-column">Data de Nascimento</label>
+                                                        <input type="date" name="nascimento" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="country-floating">Telefone</label>
+                                                        <input type="text" name="telefone" class="form-control"
+                                                            placeholder="Telefone">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="company-column">Email</label>
+                                                        <input type="email" name="email" class="form-control"
+                                                            placeholder="Email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="email-id-column">Perfil</label>
+                                                        <select class="form-control" name="perfil" id="">
+                                                            <option value="" hidden>Selecione um perfil</option>
+                                                            <option value="1">Administrativo</option>
+                                                            <option value="0">Colaborativo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d-flex justify-content-end">
+                                                    <button type="submit"
+                                                        class="btn btn-primary me-1 mb-1"
+                                                        id="salvar_novo_colaborador">Salvar</button>
+                                                    <button type="reset"
+                                                        class="btn btn-light-secondary me-1 mb-1">Limpar</button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <!-- Hoverable rows end -->
-
+                <!-- // Basic multiple Column Form section end -->
             </div>
-
-            <div class="conteudo" id="tabela-diario"></div>
 
         </div>
     </div>
-
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../dist/assets/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
-    <!-- <script src="iziToast.min.js" type="text/javascript"></script> -->
-
     <script src="../dist/assets/js/main.js"></script>
-    <script type="module" src="../js/receber/agenda.js"></script>
-    <script type="module" src="../js/receber/colaboradores-select.js"></script>
-    <script type="module" src="../js/receber/hospitais-select.js"></script>
-    <script type="module" src="../js/receber/materiais-select.js"></script>
 
-    <!-- cookies -->
     <script>
         $(document).ready(function() {
             // Função para obter o valor de um cookie pelo nome
@@ -538,51 +522,75 @@
         });
     </script>
 
-    <script type="module" src="../js/tabela/agenda-dash.js"></script>
-    <!-- <script type="module" src="../js/receber/colaboradores.js"></script> -->
+    <script type="module" src="../js/editar/recuperar.js"></script>
 
-    <!-- botões de layout -->
-    <script>
-        $(document).on("click", "#f_lista", function() {
-            $("#tabela-diario").addClass("conteudo")
-            $("#tabela_agenda_diaria").removeClass("conteudo")
-            $("#filtro-hospital").removeClass("conteudo")
-            $("#filtro-material").removeClass("conteudo")
-        })
 
-        $(document).on("click", "#f_timeline", function() {
-            $("#tabela-diario").removeClass("conteudo")
-            $("#tabela_agenda_diaria").addClass("conteudo")
-            $("#filtro-hospital").addClass("conteudo")
-            $("#filtro-material").addClass("conteudo")
-        })
-    </script>
 
     <script>
-        $(document).on("click", ".edit-btn", function() {
-            var idt = this.value
-            var tabela = $("#categoria").val()
-            var row = $(this).closest('tr'); 
-            var rowData = {};
-            
+        $('#usuarioForm').on('submit', function(e) {
+            e.preventDefault(); // Previne o envio padrão do formulário
+
+            var cpf = $('#cpf').val().replace(/[^\d]/g, ''); // Substitui qualquer coisa que não seja número por uma string vazia
+            $('#cpf').val(cpf); // Atualiza o campo CPF com o valor formatado
         
-            row.find('td').each(function(index, td) {
-                var header = $('#tabela-edicao-cabecalho th').eq(index).text();
-                var value = $(td).text();
-                rowData[header] = value;
+            // Serializar os dados do formulário
+            var formData = $(this).serialize();
+            var id_usuario = sessionStorage.getItem('id-item-editar');
+        
+            // Adicionar o id_usuario ao formData
+            formData += '&id=' + encodeURIComponent(id_usuario);
+        
+            // Fazer a requisição AJAX
+            $.ajax({
+                url: '../php/editar/salvar.php', // A URL do PHP para onde os dados serão enviados
+                type: 'POST', // Método de envio
+                data: formData, // Dados serializados do formulário
+                success: function(response) {
+                    // Aqui você trata o que fazer quando a requisição for bem-sucedida
+                    iziToast.success({
+                        title: 'Sucesso',
+                        message: 'Usuário atualizado com sucesso!',
+                        position: 'topRight',
+                        timeout: 3000
+                    });
+                    setTimeout(() => {
+                        location.href = "./colaboradores.html"
+                    }, 3010);
+                },
+                error: function(xhr, status, error) {
+                    let msg_raw_erro = JSON.parse(xhr.responseText);
+                    iziToast.error({
+                        title: 'Erro',
+                        message: msg_raw_erro.error,
+                        position: 'topRight',
+                        timeout: 3000
+                    });
+                }
             });
-        
-            rowData['tabela'] = tabela
-        
-            sessionStorage.setItem("id-editar", idt)
-            sessionStorage.setItem("editar", JSON.stringify(rowData))
-            location.href = "./agenda-editar.html"
-        })
+        });
         
     </script>
 
-    <!-- <script type="module" src="../../js/editar/direcionar.js"></script> -->
-    <script type="module" src="../../js/editar/excluir.js"></script>
+    <script>
+        const input = document.getElementById("cpf");
+
+        input.addEventListener("keyup", formatarCPF);
+
+        function formatarCPF(e){
+
+            var v=e.target.value.replace(/\D/g,"");
+
+            v=v.replace(/(\d{3})(\d)/,"$1.$2");
+
+            v=v.replace(/(\d{3})(\d)/,"$1.$2");
+
+            v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
+
+            e.target.value = v;
+
+        } 
+    </script>
+
 </body>
 
 </html>

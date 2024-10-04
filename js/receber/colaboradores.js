@@ -24,6 +24,7 @@ async function quadroColaboradores() {
     quadro.innerHTML = ''
 
     data.forEach(e => {
+        console.log(e)
         quadro.innerHTML += `
             <tr>
                 <td>${e.nome}</td>
@@ -32,8 +33,8 @@ async function quadroColaboradores() {
                 <td>${e.telefone}</td>
                 <td>${e.email}</td>
                 <td>${e.status}</td>
-                <td><button type="button" class="btn btn-primary" value="${e.id}"><i class="bi bi-pencil"></i></button></td>
-                <td><button type="button" class="btn btn-danger" value="${e.id}"><i class="bi bi-trash"></i></button></td>
+                <td><button type="button" class="btn btn-primary edit-btn" value="${e.id}"><i class="bi bi-pencil"></i></button></td>
+                <td><button type="button" class="btn btn-danger del-btn" value="${e.id}"><i class="bi bi-trash"></i></button></td>
             </tr>
         `
     });

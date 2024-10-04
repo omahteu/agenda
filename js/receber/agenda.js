@@ -32,46 +32,107 @@ $(document).ready(function() {
     });
 });
 
-async function agendaDiaria() {
-    const rq = await fetch("../php/leitura/ler_agenda.php");
-    const rs = await rq.json();
-    let data = rs;
+function agendaDiaria() {
+
+    $.ajax({
+        url: "../php/leitura/ler_agenda.php",
+        type: 'GET',
+        success: function(response) {
+            
+            let data = response;
     
-    var quadro = document.getElementById("agenda-diaria");
-    quadro.innerHTML = '';
-
-    const combinacoes = {};
-
-
-
-    data.forEach(e => {
-
-        const chave = `${e.data}-${e.horario}-${e.hospital}`;
-
-        // Verifica se a chave já existe
-        if (combinacoes[chave]) {
-            alert(`Atenção: Os colaboradores ${combinacoes[chave]} e ${e.colaborador} estão no mesmo dia, na mesma hora e no mesmo local.`);
-        } else {
-            // Armazena o colaborador na combinação
-            combinacoes[chave] = e.colaborador;
+            var quadro = document.getElementById("agenda-diaria");
+            quadro.innerHTML = '';
+        
+            const combinacoes = {};
+        
+        
+        
+            data.forEach(e => {
+        
+                const chave = `${e.data}-${e.horario}-${e.hospital}`;
+        
+                // Verifica se a chave já existe
+                if (combinacoes[chave]) {
+                    iziToast.warning({
+                        title: 'Conflito',
+                        message: `Atenção: Os colaboradores ${combinacoes[chave]} e ${e.colaborador} estão no mesmo dia, na mesma hora e no mesmo local.`,
+                        position: 'topRight',
+                        timeout: 3000
+                    });
+                    //alert(`Atenção: Os colaboradores ${combinacoes[chave]} e ${e.colaborador} estão no mesmo dia, na mesma hora e no mesmo local.`);
+                } else {
+                    // Armazena o colaborador na combinação
+                    combinacoes[chave] = e.colaborador;
+                }
+        
+                quadro.innerHTML += `
+                    <tr>
+                        <td>${e.data}</td>
+                        <td>${e.colaborador}</td>
+                        <td>${e.hospital}</td>
+                        <td>${e.material}</td>
+                        <td>${e.medico}</td>
+                        <td>${e.convenio}</td>
+                        <td>${e.horario_inicio}</td>
+                        <td>${e.horario_fim}</td>
+                        <td>${e.observacoes}</td>
+                        <td><button type="button" class="btn btn-primary edit-btn" value="${e.id}"><i class="bi bi-pencil"></i></button></td>
+                        <td><button type="button" class="btn btn-danger del-btn" value="${e.id}"><i class="bi bi-trash"></i></button></td>
+                    </tr>
+                `;
+            });
+        },
+        error: function(xhr, status, error) {
+            let msg_raw_erro = JSON.parse(xhr.responseText);
+            iziToast.error({
+                title: 'Erro',
+                message: msg_raw_erro.error,
+                position: 'topRight',
+                timeout: 3000
+            });
         }
-
-        quadro.innerHTML += `
-            <tr>
-                <td>${e.data}</td>
-                <td>${e.colaborador}</td>
-                <td>${e.hospital}</td>
-                <td>${e.material}</td>
-                <td>${e.medico}</td>
-                <td>${e.convenio}</td>
-                <td>${e.horario_inicio}</td>
-                <td>${e.horario_fim}</td>
-                <td>${e.observacoes}</td>
-                <td><button type="button" class="btn btn-primary" value="${e.id}"><i class="bi bi-pencil"></i></button></td>
-                <td><button type="button" class="btn btn-danger" value="${e.id}"><i class="bi bi-trash"></i></button></td>
-            </tr>
-        `;
     });
+    
+    // const rq = await fetch("../php/leitura/ler_agenda.php");
+    // const rs = await rq.json();
+    // let data = rs;
+    
+    // var quadro = document.getElementById("agenda-diaria");
+    // quadro.innerHTML = '';
+
+    // const combinacoes = {};
+
+
+
+    // data.forEach(e => {
+
+    //     const chave = `${e.data}-${e.horario}-${e.hospital}`;
+
+    //     // Verifica se a chave já existe
+    //     if (combinacoes[chave]) {
+    //         alert(`Atenção: Os colaboradores ${combinacoes[chave]} e ${e.colaborador} estão no mesmo dia, na mesma hora e no mesmo local.`);
+    //     } else {
+    //         // Armazena o colaborador na combinação
+    //         combinacoes[chave] = e.colaborador;
+    //     }
+
+    //     quadro.innerHTML += `
+    //         <tr>
+    //             <td>${e.data}</td>
+    //             <td>${e.colaborador}</td>
+    //             <td>${e.hospital}</td>
+    //             <td>${e.material}</td>
+    //             <td>${e.medico}</td>
+    //             <td>${e.convenio}</td>
+    //             <td>${e.horario_inicio}</td>
+    //             <td>${e.horario_fim}</td>
+    //             <td>${e.observacoes}</td>
+    //             <td><button type="button" class="btn btn-primary" value="${e.id}"><i class="bi bi-pencil"></i></button></td>
+    //             <td><button type="button" class="btn btn-danger" value="${e.id}"><i class="bi bi-trash"></i></button></td>
+    //         </tr>
+    //     `;
+    // });
 }
 
 
@@ -110,8 +171,8 @@ async function filtrarAgenda() {
                 <td>${e.horario_inicio}</td>
                 <td>${e.horario_fim}</td>
                 <td>${e.observacoes}</td>
-                <td><button type="button" class="btn btn-primary" value="${e.id}"><i class="bi bi-pencil"></i></button></td>
-                <td><button type="button" class="btn btn-danger" value="${e.id}"><i class="bi bi-trash"></i></button></td>
+                <td><button type="button" class="btn btn-primary edit-btn" value="${e.id}"><i class="bi bi-pencil"></i></button></td>
+                <td><button type="button" class="btn btn-danger del-btn" value="${e.id}"><i class="bi bi-trash"></i></button></td>
             </tr>
         `;
     });
