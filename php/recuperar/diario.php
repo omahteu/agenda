@@ -18,15 +18,15 @@ $db = $database->getConnection();
 
 $crud = new Crud($db);
 
-// Ajusta a query SQL para filtrar pelo campo 'id'
-// $query = "
-//     SELECT d.*, u.nome AS colaborador 
-//     FROM diario d
-//     JOIN usuarios u ON d.colaborador = u.id
-//     WHERE d.id = :instancia
-// ";
 
-$query = "SELECT * FROM diario WHERE id = :instancia";
+$query = "
+    SELECT d.*, u.nome AS colaborador 
+    FROM diario d
+    JOIN usuarios u ON d.colaborador = u.id
+    WHERE d.id = :instancia
+";
+
+// $query = "SELECT * FROM diario WHERE id = :instancia";
 
 // Prepara e executa a consulta
 $stmt = $db->prepare($query);

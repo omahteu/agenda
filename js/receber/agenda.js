@@ -1,35 +1,9 @@
-// $(document).ready(function() {
-//     agendaDiaria()
-// });
-
-// async function agendaDiaria() {
-//     const rq = await fetch("../php/leitura/ler_agenda.php")
-//     const rs = await rq.json()
-//     let data = rs
-//     console.log(data)
-//     var quadro = document.getElementById("agenda-diaria")
-//     quadro.innerHTML = ''
-
-//     data.forEach(e => {
-//         quadro.innerHTML += `
-//             <tr>
-//                 <td>${e.data}</td>
-//                 <td>${e.colaborador}</td>
-//                 <td>${e.cep}</td>
-//                 <td>${e.numero}</td>
-//                 <td>${e.horario}</td>
-//                 <td>${e.observacoes}</td>
-//             </tr>
-//         `
-//     });
-// }
 $(document).ready(function() {
     agendaDiaria();
+});
 
-    // Adiciona o evento de mudança nos selects
-    $('#filtro-data, #colaborador, #filtro-hospital, #filtro-material').on('change', function() {
-        filtrarAgenda();
-    });
+$('#filtro-data, #colaborador, #filtro-hospital, #filtro-material').on('change', function() {
+    filtrarAgenda();
 });
 
 function agendaDiaria() {
@@ -38,21 +12,17 @@ function agendaDiaria() {
         url: "../php/leitura/ler_agenda.php",
         type: 'GET',
         success: function(response) {
-            
             let data = response;
-    
+
             var quadro = document.getElementById("agenda-diaria");
             quadro.innerHTML = '';
         
             const combinacoes = {};
         
-        
-        
             data.forEach(e => {
         
                 const chave = `${e.data}-${e.horario}-${e.hospital}`;
         
-                // Verifica se a chave já existe
                 if (combinacoes[chave]) {
                     iziToast.warning({
                         title: 'Conflito',
@@ -60,9 +30,8 @@ function agendaDiaria() {
                         position: 'topRight',
                         timeout: 3000
                     });
-                    //alert(`Atenção: Os colaboradores ${combinacoes[chave]} e ${e.colaborador} estão no mesmo dia, na mesma hora e no mesmo local.`);
+                    
                 } else {
-                    // Armazena o colaborador na combinação
                     combinacoes[chave] = e.colaborador;
                 }
         
@@ -93,46 +62,6 @@ function agendaDiaria() {
             });
         }
     });
-    
-    // const rq = await fetch("../php/leitura/ler_agenda.php");
-    // const rs = await rq.json();
-    // let data = rs;
-    
-    // var quadro = document.getElementById("agenda-diaria");
-    // quadro.innerHTML = '';
-
-    // const combinacoes = {};
-
-
-
-    // data.forEach(e => {
-
-    //     const chave = `${e.data}-${e.horario}-${e.hospital}`;
-
-    //     // Verifica se a chave já existe
-    //     if (combinacoes[chave]) {
-    //         alert(`Atenção: Os colaboradores ${combinacoes[chave]} e ${e.colaborador} estão no mesmo dia, na mesma hora e no mesmo local.`);
-    //     } else {
-    //         // Armazena o colaborador na combinação
-    //         combinacoes[chave] = e.colaborador;
-    //     }
-
-    //     quadro.innerHTML += `
-    //         <tr>
-    //             <td>${e.data}</td>
-    //             <td>${e.colaborador}</td>
-    //             <td>${e.hospital}</td>
-    //             <td>${e.material}</td>
-    //             <td>${e.medico}</td>
-    //             <td>${e.convenio}</td>
-    //             <td>${e.horario_inicio}</td>
-    //             <td>${e.horario_fim}</td>
-    //             <td>${e.observacoes}</td>
-    //             <td><button type="button" class="btn btn-primary" value="${e.id}"><i class="bi bi-pencil"></i></button></td>
-    //             <td><button type="button" class="btn btn-danger" value="${e.id}"><i class="bi bi-trash"></i></button></td>
-    //         </tr>
-    //     `;
-    // });
 }
 
 

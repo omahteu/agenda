@@ -10,17 +10,16 @@ $('#colaborador').on('change', function() {
     build_tabela({data: data, colaborador: colaborador})
 });
 
+
 function build_tabela(data) {
-    console.log('entrou')
+
     $.ajax({
-        url: '../php/leitura/ler_agenda_tab.php', // O caminho para o script PHP
+        url: '../php/leitura/ler_agenda_tab.php',
         type: 'GET',
         dataType: 'json',
         data: data,
 
         success: function(data) {
-            console.log(data)
-            // Define os horários para as colunas
             let horarios = [];
             for (let i = 0; i < 24; i++) {
                 horarios.push((i < 10 ? '0' : '') + i + ':00');
@@ -35,7 +34,6 @@ function build_tabela(data) {
 
             let colaboradores = {};
 
-            // Organiza os horários por colaborador e intervalo
             data.forEach(function(registro) {
                 if (!colaboradores[registro.colaborador]) {
                     colaboradores[registro.colaborador] = [];
@@ -47,7 +45,6 @@ function build_tabela(data) {
                 });
             });
 
-            // Monta as linhas da tabela
             Object.keys(colaboradores).forEach(function(colaborador) {
                 tabela += '<tr>';
                 tabela += '<td>' + colaborador + '</td>';
@@ -81,7 +78,6 @@ function build_tabela(data) {
 
             tabela += '</table></div>';
 
-            // Insere a tabela no HTML
             $('#tabela-diario').html(tabela);
         }
     });

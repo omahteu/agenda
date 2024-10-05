@@ -490,19 +490,26 @@
         </div>
     </div>
 
+    <!-- JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../dist/assets/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
-    <!-- <script src="iziToast.min.js" type="text/javascript"></script> -->
-
     <script src="../dist/assets/js/main.js"></script>
+    <!-- Fim JS -->
+
+    <!-- Montagem da Tabela -->
     <script type="module" src="../js/receber/agenda.js"></script>
+    <script type="module" src="../js/tabela/agenda-dash.js"></script>
+    <!-- Fim Montagem da Tabela -->
+
+    <!-- Filtros -->
     <script type="module" src="../js/receber/colaboradores-select.js"></script>
     <script type="module" src="../js/receber/hospitais-select.js"></script>
     <script type="module" src="../js/receber/materiais-select.js"></script>
+    <!-- Fim Filtros -->
 
-    <!-- cookies -->
+    <!-- Cookies -->
     <script>
         $(document).ready(function() {
             // Função para obter o valor de um cookie pelo nome
@@ -537,11 +544,9 @@
             });
         });
     </script>
+    <!-- Fim Cookies -->
 
-    <script type="module" src="../js/tabela/agenda-dash.js"></script>
-    <!-- <script type="module" src="../js/receber/colaboradores.js"></script> -->
-
-    <!-- botões de layout -->
+    <!-- Botões Layout -->
     <script>
         $(document).on("click", "#f_lista", function() {
             $("#tabela-diario").addClass("conteudo")
@@ -557,7 +562,9 @@
             $("#filtro-material").addClass("conteudo")
         })
     </script>
+    <!-- Fim Botões Layout -->
 
+    <!-- Editar Registro -->
     <script>
         $(document).on("click", ".edit-btn", function() {
             var idt = this.value
@@ -580,9 +587,11 @@
         })
         
     </script>
+    <!-- Fim Editar Registro -->
 
-    <!-- <script type="module" src="../../js/editar/direcionar.js"></script> -->
+    <!-- Exluir -->
     <script type="module" src="../../js/editar/excluir.js"></script>
+    <!-- Fim Excluir -->
 </body>
 
 </html>

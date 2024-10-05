@@ -422,7 +422,7 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form" method="post">
+                                        <form class="form" method="post" id="usuarioForm">
                                             <div class="row">
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
@@ -433,9 +433,7 @@
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
                                                         <label for="last-name-column">Colaborador</label>
-                                                        <select name="colaborador" id="colaborador" class="form-control">
-                                                            <option value="" hidden>Selecione</option>
-                                                        </select>
+                                                        <input type="text" name="colaborador" id="colaborador" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
@@ -510,7 +508,7 @@
 
     <script src="../dist/assets/js/main.js"></script>
 
-    <!-- <script type="module" src="../js/receber/colaboradores-select.js"></script> -->
+    <script type="module" src="../js/receber/colaboradores-select.js"></script>
 
     <script>
         $(document).ready(function() {
@@ -581,6 +579,7 @@
             }
         });
         
+
         function preencherFormulario(data) {
             // Supondo que a requisição sempre traga ao menos um objeto, usamos data[0] para acessar o primeiro
             let usuario = data[0];
@@ -590,27 +589,61 @@
             
             // Mapeando os campos do formulário
             document.querySelector('input[name="data"]').value = usuario.data;
-        
-            // Definindo o valor do select 'colaborador'
-            const selectColaborador = document.querySelector('select[name="colaborador"]');
-            const option = Array.from(selectColaborador.options).find(opt => opt.value == usuario.colaborador);
-            if (option) {
-                selectColaborador.value = usuario.colaborador;
-            }
-        
+            document.getElementById('colaborador').value = usuario.colaborador;
+            document.getElementById('colaborador').disabled = true;            
             document.querySelector('input[name="hospital"]').value = usuario.hospital;
             document.querySelector('input[name="material"]').value = usuario.material;
             document.querySelector('input[name="medico"]').value = usuario.medico;
             document.querySelector('input[name="convenio"]').value = usuario.convenio;
-            
-            // Definindo os valores dos campos de horário no formato HH:MM
-            document.querySelector('input[name="horario_inicio"]').value = usuario.horarioInicio.slice(0, 5);
-            document.querySelector('input[name="horario_fim"]').value = usuario.horarioFim.slice(0, 5);
-        
+            document.querySelector('input[name="horario_inicio"]').value = usuario.horario_inicio;
+            document.querySelector('input[name="horario_fim"]').value = usuario.horario_fim;
             document.querySelector('textarea[name="observacoes"]').value = usuario.observacoes;
         }
         
         
+        
+    </script>
+
+    <script>
+        $('#usuarioForm').on('submit', function(e) {
+            e.preventDefault(); // Previne o envio padrão do formulário
+
+        
+            // Serializar os dados do formulário
+            var formData = $(this).serialize();
+            var id_usuario = sessionStorage.getItem('id-item-editar');
+        
+            // Adicionar o id_usuario ao formData
+            formData += '&id=' + encodeURIComponent(id_usuario);
+            
+            console.log(formData)
+            $.ajax({
+                url: '../php/editar/agenda.php', // A URL do PHP para onde os dados serão enviados
+                type: 'POST', // Método de envio
+                data: formData, // Dados serializados do formulário
+                success: function(response) {
+                    // Aqui você trata o que fazer quando a requisição for bem-sucedida
+                    iziToast.success({
+                        title: 'Sucesso',
+                        message: 'Usuário atualizado com sucesso!',
+                        position: 'topRight',
+                        timeout: 3000
+                    });
+                    setTimeout(() => {
+                        location.href = "./ver-agenda.html"
+                    }, 3010);
+                },
+                error: function(xhr, status, error) {
+                    let msg_raw_erro = JSON.parse(xhr.responseText);
+                    iziToast.error({
+                        title: 'Erro',
+                        message: msg_raw_erro.error,
+                        position: 'topRight',
+                        timeout: 3000
+                    });
+                }
+            });
+        });
         
     </script>
 </body>
