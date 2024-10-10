@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../dist/assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="../dist/assets/css/app.css">
     <link rel="shortcut icon" href="../imagens/localizacao.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
     <style>
         .conteudo {
             display: none;
@@ -418,23 +419,23 @@
                             <div class="card">
                                 <div class="card-content">
                                     <div class="card-body">
-                                        <form class="form" method="post" action="../php/cadastros/usuario.php">
+                                        <form class="form" method="post" id="update-ponto">
                                             <div class="row">
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <select class="form-control" name="" id="inicio-gps">
+                                                        <select class="form-control" name="tipo_inicio_gps" id="inicio-gps">
                                                             <option value="" hidden>Início do GPS</option>
-                                                            <option value="fixo">Horário fixo</option>
-                                                            <option value="variavel">Horário variável</option>
+                                                            <option value="1">Horário fixo</option>
+                                                            <option value="2">Horário variável</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-group">
-                                                        <select class="form-control" name="" id="fim-gps">
+                                                        <select class="form-control" name="tipo_fim_gps" id="fim-gps">
                                                             <option value="" hidden>Fim do GPS</option>
-                                                            <option value="fixo">Horário fixo</option>
-                                                            <option value="variavel">Horário variável</option>
+                                                            <option value="1">Horário fixo</option>
+                                                            <option value="2">Horário variável</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -470,7 +471,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="../dist/assets/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
     <script src="../dist/assets/js/main.js"></script>
 
     <script>
@@ -508,21 +509,110 @@
         });
     </script>
 
-        <!-- Botões Layout -->
-        <script>
-            $(document).on("change", "#inicio-gps", function() {
-                if ($(this).val() == "fixo") {
-                    $("#hic").removeClass("conteudo")
+    <!-- Botões Layout -->
+    <script>
+        $(document).on("change", "#inicio-gps", function() {
+            if ($(this).val() == "1") {
+                $("#hic").removeClass("conteudo")
+            }
+        })
+
+        $(document).on("change", "#fim-gps", function() {
+            if ($(this).val() == "1") {
+                $("#hfc").removeClass("conteudo")
+            }
+        })
+    </script>
+    <!-- Fim Botões Layout -->
+
+    <!-- Busca configurações atuais -->
+    <script>
+        $(document).ready(function() {
+            
+            
+            $.ajax({
+                url: '../php/leitura/ponto.php',
+                type: 'GET',
+                cache: false,
+                success: function(response) {
+            
+                    let data = response;
+                    
+                    $("#inicio-gps").val(data[0].inicio)
+                    $("#hic").val(data[0].hora_inicio)
+                    $("#fim-gps").val(data[0].fim)
+                    $("#hfc").val(data[0].hora_fim)
+            
+                    // Verificar se o valor de 'inicio' é 1
+                    if (data[0].inicio == 1) {
+                        // Pegar o valor de 'hora_inicio' e salvar em sessionStorage com a chave 'config_ponto_inicio'
+                        sessionStorage.setItem('config_ponto_inicio', data.hora_inicio);
+                        $("#hic").removeClass("conteudo")
+                        $("#hic").val(data[0].hora_inicio)
+                    }
+            
+                    // Verificar se o valor de 'inicio' é 2
+                    if (data[0].inicio == 2) {
+                        // Salvar em sessionStorage com a chave 'config_ponto_inicio'
+                        sessionStorage.setItem('config_ponto_inicio', 'inicio_2');
+                    }
+            
+                    // Verificar se o valor de 'fim' é 1
+                    if (data[0].fim == 1) {
+                        // Pegar o valor de 'hora_fim' e salvar em sessionStorage com a chave 'config_ponto_fim'
+                        sessionStorage.setItem('config_ponto_fim', data.hora_fim);
+                        $("#hfc").removeClass("conteudo")
+                        $("#hfc").val(data[0].hora_inicio)
+                    }
+            
+                    // Verificar se o valor de 'fim' é 2
+                    if (data[0].fim == 2) {
+                        // Salvar em sessionStorage com a chave 'config_ponto_fim'
+                        sessionStorage.setItem('config_ponto_fim', 'fim_2');
+                    }
+            
+                    
+                },
+                error: function(xhr, status, error) {
+                    let msg_raw_erro = JSON.parse(xhr.responseText);
+                    iziToast.error({
+                        title: 'Erro',
+                        message: msg_raw_erro.error,
+                        position: 'topRight',
+                        timeout: 3000
+                    });
                 }
-            })
-    
-            $(document).on("change", "#fim-gps", function() {
-                if ($(this).val() == "fixo") {
-                    $("#hfc").removeClass("conteudo")
+            });
+            
+        });
+    </script>
+    <!-- Fim Busca configurações atuais -->
+
+    <script>
+        $('#update-ponto').on('submit', function(e) {
+            e.preventDefault(); // Previne o envio padrão do formulário
+
+            // Serializa todos os dados do formulário
+            var formData = $(this).serialize();
+
+            console.log(formData)
+            // Envia os dados via AJAX para o arquivo PHP
+            $.ajax({
+                url: '../php/editar/ponto.php', // Coloque aqui o caminho para o seu arquivo PHP
+                type: 'POST',
+                data: formData,
+                success: function(response) {
+                    // Manipula a resposta do servidor
+                    alert("Dados enviados com sucesso!");
+                    console.log(response); // Ver resposta do PHP
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    alert("Ocorreu um erro ao enviar os dados.");
                 }
-            })
-        </script>
-        <!-- Fim Botões Layout -->
+            });
+        });
+    </script>
 
 
 </body>

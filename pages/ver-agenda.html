@@ -590,8 +590,46 @@
     <!-- Fim Editar Registro -->
 
     <!-- Exluir -->
-    <script type="module" src="../../js/editar/excluir.js"></script>
+    
     <!-- Fim Excluir -->
+
+    <script>
+        $(document).on("click", ".del-btn", function() {
+
+            var itemId = this.value
+        
+            let confirmacao = confirm("Tem certeza que deseja excluir esse item?")
+            
+            if (confirmacao) {
+        
+                $.ajax({
+                    url: "../php/deletar/agenda.php",
+                    type: "POST",
+                    data: {id: itemId},
+                    caches: false,
+                    success: function(response) {
+        
+                        var result = JSON.parse(response);
+        
+                        iziToast.success({
+                            title: 'Sucesso',
+                            message: result.message,
+                            position: 'topRight',
+                            timeout: 2000
+                        });
+                        setTimeout(() => {
+                            location.href = "./ver-agenda.html"
+                        }, 2010);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert("Erro na exclusão do item: " + textStatus);
+                    }
+                });
+            }
+        
+        })
+        
+    </script>
 </body>
 
 </html>

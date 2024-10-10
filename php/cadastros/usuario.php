@@ -20,7 +20,7 @@ $is_staff = isset($_POST['perfil']) ? intval($_POST['perfil']) : null;
 $status = 1;
 
 // Verifica se o perfil foi selecionado
-if (is_null($is_staff) || $is_staff === 0) {
+if (is_null($is_staff)) {
     http_response_code(400); // Define o código de status HTTP para 400 (Bad Request)
     echo json_encode(['error' => 'É necessário escolher um perfil para o colaborador.']);
     exit();
