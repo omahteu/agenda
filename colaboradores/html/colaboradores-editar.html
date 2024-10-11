@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Colaborador</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../dist/assets/css/bootstrap.css">
+
+    <link rel="stylesheet" href="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="../dist/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="../dist/assets/css/app.css">
+    <link rel="shortcut icon" href="../imagens/localizacao.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/izitoast/dist/css/iziToast.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="sidebar" class="active">
+            <div class="sidebar-wrapper active">
+                <div class="sidebar-header">
+                    <div class="d-flex justify-content-between">
+                        <div class="logo">
+                            <a href="index.html"><img src="../imagens/localizacao.png" alt="Logo" srcset=""></a>
+                        </div>
+                        <div class="toggler">
+                            <a href="#" class="sidebar-hide d-xl-none d-block"><i class="bi bi-x bi-middle"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="sidebar-menu">
+                    <ul class="menu">
+                        <li class="sidebar-title">Menu</li>
+
+                        <li class="sidebar-item  ">
+                            <a href="./dash.html" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item active has-sub">
+                            <a href="." class='sidebar-link'>
+                                <i class="bi bi-people-fill"></i>
+                                <span>Colaboradores</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="./novo-colaborador.html">Novo Colaborador</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="./colaboradores.html">Ver Colaboradores</a>
+                                </li>
+                                <!-- <li class="submenu-item ">
+                                    <a href="./dist/auth-login.html">Login</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="./dist/auth-register.html">Register</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="./dist/auth-forgot-password.html">Forgot Password</a>
+                                </li> -->
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-journal-bookmark-fill"></i>
+                                <span>Agenda</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="./criar-agenda.html">Criar Agenda</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="./ver-agenda.html">Ver Agenda</a>
+                                </li>
+                                <!-- <li class="submenu-item ">
+                                    <a href="./dist/error-500.html">500</a>
+                                </li> -->
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="." class='sidebar-link'>
+                                <i class="bi bi-people-fill"></i>
+                                <span>Configurações</span>
+                            </a>
+                            <ul class="submenu ">
+                                <li class="submenu-item ">
+                                    <a href="./ponto.html">Ponto</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="./senha.html">Senha</a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="./relatorio.html" class='sidebar-link'>
+                                <i class="bi bi-life-preserver"></i>
+                                <span>Relatório</span>
+                            </a>
+                        </li>
+
+                        <li class="sidebar-item  ">
+                            <a href="" class='sidebar-link' id="logout-button">
+                                <i class="bi bi-puzzle"></i>
+                                <span>Sair</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- <button class="sidebar-toggler btn x"><i data-feather="x"></i></button> -->
+            </div>
+        </div>
+        <div id="main">
+            <header class="mb-3">
+                <a href="#" class="burger-btn d-block d-xl-none">
+                    <i class="bi bi-justify fs-3"></i>
+                </a>
+            </header>
+
+            <div class="page-heading">
+                <div class="page-title">
+                    <div class="row">
+                        <div class="col-12 col-md-6 order-md-1 order-last">
+                            <h3>Editar Colaborador</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- // Basic multiple Column Form section start -->
+                <section id="multiple-column-form">
+                    <div class="row match-height">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <form id="usuarioForm" class="form" method="post">
+                                            <div class="row">
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="first-name-column">Nome</label>
+                                                        <input type="text" name="nome" class="form-control"
+                                                            placeholder="Nome">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="last-name-column">CPF</label>
+                                                        <input type="text" name="cpf" class="form-control"
+                                                            placeholder="CPF" id="cpf">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="city-column">Data de Nascimento</label>
+                                                        <input type="date" name="nascimento" class="form-control">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="country-floating">Telefone</label>
+                                                        <input type="text" name="telefone" class="form-control"
+                                                            placeholder="Telefone">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="company-column">Email</label>
+                                                        <input type="email" name="email" class="form-control"
+                                                            placeholder="Email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6 col-12">
+                                                    <div class="form-group">
+                                                        <label for="email-id-column">Perfil</label>
+                                                        <select class="form-control" name="perfil" id="">
+                                                            <option value="" hidden>Selecione um perfil</option>
+                                                            <option value="1">Administrativo</option>
+                                                            <option value="0">Colaborativo</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 d-flex justify-content-end">
+                                                    <button type="submit"
+                                                        class="btn btn-primary me-1 mb-1"
+                                                        id="salvar_novo_colaborador">Salvar</button>
+                                                    <button type="reset"
+                                                        class="btn btn-light-secondary me-1 mb-1">Limpar</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- // Basic multiple Column Form section end -->
+            </div>
+
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../dist/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="../dist/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/izitoast/dist/js/iziToast.min.js"></script>
+    <script src="../dist/assets/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            // Função para obter o valor de um cookie pelo nome
+            function getCookie(name) {
+                let value = "; " + document.cookie;
+                let parts = value.split("; " + name + "=");
+                if (parts.length == 2) return parts.pop().split(";").shift();
+            }
+
+            // Função para excluir um cookie pelo nome
+            function deleteCookie(name) {
+                document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+            }
+
+            // Ler o cookie 'user_id'
+            let userId = getCookie('user_id');
+
+            if (userId) {
+                console.log("User ID from cookie: " + userId);
+                // Aqui você pode usar o userId conforme necessário
+            } else {
+                console.log("No user ID found in cookies.");
+                window.location.href = '../index.html';
+            }
+
+            // Manipulador de clique para o botão de sair
+            $('#logout-button').on('click', function() {
+                // Excluir o cookie 'user_id'
+                deleteCookie('user_id');
+
+                window.location.href = '../index.html';
+            });
+        });
+    </script>
+
+    <script type="module" src="../js/editar/recuperar.js"></script>
+
+
+
+    <script>
+        $('#usuarioForm').on('submit', function(e) {
+            e.preventDefault(); // Previne o envio padrão do formulário
+
+            var cpf = $('#cpf').val().replace(/[^\d]/g, ''); // Substitui qualquer coisa que não seja número por uma string vazia
+            $('#cpf').val(cpf); // Atualiza o campo CPF com o valor formatado
+        
+            // Serializar os dados do formulário
+            var formData = $(this).serialize();
+            var id_usuario = sessionStorage.getItem('id-item-editar');
+        
+            // Adicionar o id_usuario ao formData
+            formData += '&id=' + encodeURIComponent(id_usuario);
+        
+            // Fazer a requisição AJAX
+            $.ajax({
+                url: '../php/editar/salvar.php', // A URL do PHP para onde os dados serão enviados
+                type: 'POST', // Método de envio
+                data: formData, // Dados serializados do formulário
+                success: function(response) {
+                    // Aqui você trata o que fazer quando a requisição for bem-sucedida
+                    iziToast.success({
+                        title: 'Sucesso',
+                        message: 'Usuário atualizado com sucesso!',
+                        position: 'topRight',
+                        timeout: 3000
+                    });
+                    setTimeout(() => {
+                        location.href = "./colaboradores.html"
+                    }, 3010);
+                },
+                error: function(xhr, status, error) {
+                    let msg_raw_erro = JSON.parse(xhr.responseText);
+                    iziToast.error({
+                        title: 'Erro',
+                        message: msg_raw_erro.error,
+                        position: 'topRight',
+                        timeout: 3000
+                    });
+                }
+            });
+        });
+        
+    </script>
+
+    <script>
+        const input = document.getElementById("cpf");
+
+        input.addEventListener("keyup", formatarCPF);
+
+        function formatarCPF(e){
+
+            var v=e.target.value.replace(/\D/g,"");
+
+            v=v.replace(/(\d{3})(\d)/,"$1.$2");
+
+            v=v.replace(/(\d{3})(\d)/,"$1.$2");
+
+            v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2");
+
+            e.target.value = v;
+
+        } 
+    </script>
+
+</body>
+
+</html>
